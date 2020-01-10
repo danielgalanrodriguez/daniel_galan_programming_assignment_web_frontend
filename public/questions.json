@@ -1,0 +1,170 @@
+{
+    "questions":[
+          {
+          "text":"Which of the following companies is not a Jayway client?",
+          "image":"",
+          "correctAnswer":"1",
+          "answers":[
+                    {"0":"Microsoft"},
+                    {"1":"Bosch"},
+                    {"2":"Volvo"},
+                    {"3":"Siemens"}
+                  ]
+        },
+        {
+          "text":"Which of the following cities does not have a Jayway office?",
+          "image":"",
+          "correctAnswer":"2",
+          "answers":[
+                    {"0":"Malmö"},
+                    {"1":"Palo Alto"},
+                    {"2":"Los gatos"},
+                    {"3":"Copenhagen"}
+                  ]
+        },
+        {
+          "text":"How many time does Jayway had to develop gyldendal's project?",
+          "image":"",
+          "correctAnswer":"0",
+          "answers":[
+                    {"0":"A couple of weeks"},
+                    {"1":"A couple of months"},
+                    {"2":"6 months"},
+                    {"3":"4 weeks"}
+                  ]
+        },
+        {
+          "text":"Which of the following projects was developed by Jayway?",
+          "image":"",
+          "correctAnswer":"0",
+          "answers":[
+                    {"0":"Telia pay"},
+                    {"1":"Telenor pay"},
+                    {"2":"Comhem pay"},
+                    {"3":"Non of the others"}
+                  ]
+        },
+        {
+          "text":"In which of the following conferences is Jayway a partner?",
+          "image":"",
+          "correctAnswer":"3",
+          "answers":[
+                    {"0":"Techne forum"},
+                    {"1":"Velocity"},
+                    {"2":"Oscon"},
+                    {"3":"Øredev"}
+                  ]
+        },
+        {
+          "text":"How many followers does Jayway have on instagram?",
+          "image":"",
+          "correctAnswer":"2",
+          "answers":[
+                    {"0":"less than 100"},
+                    {"1":"more than 600"},
+                    {"2":"around 500"},
+                    {"3":"more than a million"}
+                  ]
+        },
+        {
+          "text":"Which of the following organizations is not part of the Jayway family?",
+          "image":"",
+          "correctAnswer":"1",
+          "answers":[
+                    {"0":"Talent without borders"},
+                    {"1":"The Special Committee for the Conservation of Special Committees"},
+                    {"2":"Mind the gaps"},
+                    {"3":"Øredev"}
+                  ]
+        },
+        {
+          "text":"How many blogs does Jayway have on its website?",
+          "image":"",
+          "correctAnswer":"1",
+          "answers":[
+                    {"0":"1"},
+                    {"1":"2"},
+                    {"2":"3"},
+                    {"3":"4"}
+                  ]
+        },
+        {
+          "text":"How many labs does Jayway have on its website?",
+          "image":"",
+          "correctAnswer":"2",
+          "answers":[
+                    {"0":"4"},
+                    {"1":"3"},
+                    {"2":"2"},
+                    {"3":"1"}
+                  ]
+        },
+        {
+          "text":"Which kind of lab is developed in Jayway Malmö Office?",
+          "image":"",
+          "correctAnswer":"0",
+          "answers":[
+                    {"0":"VR"},
+                    {"1":"IOT"},
+                    {"2":"IA"},
+                    {"3":"ASAP"}
+                  ]
+        },
+        {
+          "text":"Is jabra a Jayway project?",
+          "image":"",
+          "correctAnswer":"3",
+          "answers":[
+                    {"0":"No"},
+                    {"1":"We wish..."},
+                    {"2":"Never lose hope"},
+                    {"3":"Of course!"}
+                  ]
+        },
+        {
+          "text":"",
+          "image":"turning-torso.jpg",
+          "correctAnswer":"0",
+          "answers":[
+                    {"0":"Malmö"},
+                    {"1":"Palo Alto"},
+                    {"2":"Stockholm"},
+                    {"3":"Copenhagen"}
+                  ]
+        },
+        {
+          "text":"",
+          "image":"halmstad.jpg",
+          "correctAnswer":"2",
+          "answers":[
+                    {"0":"Copenhagen"},
+                    {"1":"Palo Alto"},
+                    {"2":"Halmstad"},
+                    {"3":"Malmö"}
+                  ]
+        },
+        {
+          "text":"",
+          "image":"stockholm.jpg",
+          "correctAnswer":"1",
+          "answers":[
+                      {"0":"Halmstad"},
+                      {"1":"Stockholm"},
+                      {"2":"Copenhagen"},
+                      {"3":"Malmö"}
+                  ]
+        },
+        {
+          "text":"",
+          "image":"copenhagen.jpg",
+          "correctAnswer":"2",
+          "answers":[
+                    {"0":"Halmstad"},
+                    {"1":"Stockholm"},
+                    {"2":"Copenhagen"},
+                    {"3":"Malmö"}
+                  ]
+        }
+      ]
+    }
+    
