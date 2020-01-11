@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import StartMessage from "../../components/messages/Start";
 import GameOverMessage from "../../components/messages/GameOver";
+import Questions from "../../components/question/Questions";
 import "./App.css";
 
 const questionsURL = "http://localhost:3000/questions.json";
@@ -11,7 +12,7 @@ function App() {
   const [finalQuestions, setFinalQuestions] = useState(null);
   //const [userAnswers, setUserAnswers] = useState([]);
   const [isGameLoading, setIsGameLoading] = useState(true);
-  //const [isGameStarted, setIsGameStarted] = useState(false);
+  const [isGameStarted, setIsGameStarted] = useState(false);
   const [isGameFinished, setIsGameFinished] = useState(false);
 
   // Fetching all questions
@@ -52,11 +53,13 @@ function App() {
     return Math.floor(Math.random() * limit);
   }
 
-  const startHandler = () => setIsGameFinished(true);
+  const startHandler = () => setIsGameStarted(true);
 
   let content = (
     <StartMessage loading={isGameLoading} startHandler={startHandler} />
   );
+
+  if (isGameStarted) content = <Questions />;
 
   if (isGameFinished) content = <GameOverMessage />;
 
