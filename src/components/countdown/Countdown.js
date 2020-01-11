@@ -16,21 +16,21 @@ function Countdown(props) {
       setSecondsRemaining(props.maxSeconds);
       props.endHandler();
     }
-  }, [secondsRemaining]);
+  }, [secondsRemaining, props]);
 
   useEffect(() => {
     if (props.needModification) {
       setSecondsRemaining(prevSeconds => prevSeconds + props.secondsToModify);
       props.setNeedModification(false);
     }
-  }, [props.needModification]);
+  }, [props]);
 
   useEffect(() => {
     if (props.needReset) {
       setSecondsRemaining(props.maxSeconds);
       props.setNeedReset(false);
     }
-  }, [props.needReset]);
+  }, [props]);
 
   return (
     <div>
