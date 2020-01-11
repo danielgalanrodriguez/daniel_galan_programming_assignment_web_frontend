@@ -10,7 +10,7 @@ function Questions(params) {
     false
   );
 
-  const countdownEndHandler = () => alert("finished!");
+  const countdownEndHandler = () => console.log("finished!");
   return (
     <div className="player-panel">
       <button
@@ -27,6 +27,10 @@ function Questions(params) {
       >
         50/50
       </button>
+
+      <div className="player-time player-remaining-questions">
+        {/*`${currentQuestion}/${totalQuestions}`*/}5/5
+      </div>
 
       <Countdown
         maxSeconds={secondsToAnswer}
