@@ -1,16 +1,21 @@
 import React, { useState, useEffect } from "react";
 import Countdown from "../countdown/Countdown";
 
-const secondsToAnswer = 15;
+const secondsToAnswer = 10;
 const secondsToAdd = 10;
 
 function Questions(params) {
+  const [countdownNeedReset, setCountdownNeedReset] = useState(false);
+  const [countdownNeedModification, setCountdownNeedModification] = useState(
+    false
+  );
+
   const countdownEndHandler = () => alert("finished!");
   return (
     <div className="player-panel">
       <button
         className={"btn-more-time " /*+ (useTimeLifeline && "btn-red")*/}
-        onClick={() => alert("used!")}
+        onClick={() => setCountdownNeedModification(true)}
         disabled={false}
       >
         +10 s
@@ -25,8 +30,12 @@ function Questions(params) {
 
       <Countdown
         maxSeconds={secondsToAnswer}
+        secondsToModify={secondsToAdd}
         endHandler={countdownEndHandler}
-        needReset={false}
+        needReset={countdownNeedReset}
+        needModification={countdownNeedModification}
+        setNeedReset={setCountdownNeedReset}
+        setNeedModification={setCountdownNeedModification}
       />
     </div>
   );
