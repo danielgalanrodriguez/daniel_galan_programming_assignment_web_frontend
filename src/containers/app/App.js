@@ -6,11 +6,12 @@ import "./App.css";
 
 const questionsURL = "http://localhost:3000/questions.json";
 const numberOfQuestionsToShow = 10;
+const answerValues = { correct: 1, wrong: 0, unanswered: -1 };
 
 function App() {
   const [allQuestions, setAllQuestions] = useState(null);
   const [finalQuestions, setFinalQuestions] = useState(null);
-  //const [userAnswers, setUserAnswers] = useState([]);
+  const [userAnswers, setUserAnswers] = useState([]);
   const [isGameLoading, setIsGameLoading] = useState(true);
   const [isGameStarted, setIsGameStarted] = useState(false);
   const [isGameFinished, setIsGameFinished] = useState(false);
@@ -45,9 +46,14 @@ function App() {
         indexOfQuestionsUsed.push(indexChosen);
       }
       setFinalQuestions(questionsToShow);
-      setIsGameLoading(false);
     }
   }, [allQuestions]);
+
+  useEffect(() => {
+    if (finalQuestions != null) {
+      setIsGameLoading(false);
+    }
+  }, [finalQuestions]);
 
   function generateRandomNumber(limit) {
     return Math.floor(Math.random() * limit);
@@ -59,9 +65,16 @@ function App() {
     <StartMessage loading={isGameLoading} startHandler={startHandler} />
   );
 
-  if (isGameStarted) content = <Questions />;
+  if (isGameStarted)
+    content = (
+      <Questions
+        questions={finalQuestions}
+        setUserAnswers={setUserAnswers}
+        answerValues={answerValues}
+      />
+    );
 
-  if (isGameFinished) content = <GameOverMessage />;
+  // if (isGameFinished) content = <GameOverMessage />;
 
   return content;
 }
