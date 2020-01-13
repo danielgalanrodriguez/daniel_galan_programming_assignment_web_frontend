@@ -39,14 +39,12 @@
   top: 45px;
   left: 50%;
   margin-top: 0px;
-
 }
 
 .player-remaining-questions {
   top: 45px;
   left: 40%;
   margin-top: 0px;
-
 }
 
 .question-text {
@@ -77,8 +75,6 @@
   position: relative;
 }
 
-
-
 .player-positive-feedback {
   font-size: 40px;
   text-align: center;
@@ -104,10 +100,6 @@
   color: red;
 }
 
-
-
-
-
 button {
   position: absolute;
   width: 200px;
@@ -124,15 +116,19 @@ button {
   transition: background-color 0.3s, color 0.3s;
 }
 
-button:hover { font-weight: 600; }
-button:hover i { margin-right: 20px; }
+button:hover {
+  font-weight: 600;
+}
+button:hover i {
+  margin-right: 20px;
+}
 
 button:focus {
   outline: none;
 }
 
 i {
-  color: #EB4D4D;
+  color: #eb4d4d;
   display: inline-block;
   margin-right: 15px;
   font-size: 32px;
@@ -142,34 +138,37 @@ i {
   transition: margin 0.3s;
 }
 
-.btn-new { top: 45px;}
+.btn-new {
+  top: 45px;
+}
 .btn-50-50 {
-          top: 45px;
-          left: 150px;
-          height: 40px;
-          width: 100px;
-          transform: none;
-          border-radius: 70%;
-          border: 1px;
-          border-style: solid;
-
-
-        }
-.btn-50-50:hover { background-color: lightgray ; }
+  top: 45px;
+  left: 150px;
+  height: 40px;
+  width: 100px;
+  transform: none;
+  border-radius: 70%;
+  border: 1px;
+  border-style: solid;
+}
+.btn-50-50:hover {
+  background-color: lightgray;
+}
 
 .btn-more-time {
-          top: 45px;
-          left: auto;
-          right: 150px;
-          height: 40px;
-          width: 100px;
-          transform: none;
-          border-radius: 70%;
-          border: 1px;
-          border-style: solid;
-
-        }
-.btn-more-time:hover { background-color: lightgray ; }
+  top: 45px;
+  left: auto;
+  right: 150px;
+  height: 40px;
+  width: 100px;
+  transform: none;
+  border-radius: 70%;
+  border: 1px;
+  border-style: solid;
+}
+.btn-more-time:hover {
+  background-color: lightgray;
+}
 
 .btn-possible-answers-text {
   font-size: 20px;
@@ -183,6 +182,15 @@ i {
   text-transform: none;
 }
 
-.btn-possible-answers-text:active { background-color: lightgray ; }
-.btn-red { background-color:red; }
-.hide { display: none; }
+.btn-possible-answers-text:active {
+  background-color: lightgray;
+}
+.btn-red {
+  background-color: red;
+}
+.disable-button {
+  pointer-events: none;
+}
+.hide {
+  display: none;
+}
