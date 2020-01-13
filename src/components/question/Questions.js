@@ -1,12 +1,18 @@
 import React, { useState, useEffect, Fragment } from "react";
 import Countdown from "../countdown/Countdown";
 
-const secondsToAnswer = 5;
+const secondsToAnswer = 15;
 const secondsToAdd = 10;
 const numberOfAnswers = 4;
+const numberOfAnswersToHide = 2;
 
 function Questions(props) {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  const [isTimeLifelineUsed, setIsTimeLifelineUsed] = useState(false);
+  const [isFiftyLifelineUsed, setIsFiftyLifelineUsed] = useState(false);
+  const [answersHideStatus, setAnswersHideStatus] = useState(
+    Array(numberOfAnswers).fill(false)
+  );
 
   const [countdownNeedReset, setCountdownNeedReset] = useState(false);
   const [countdownNeedModification, setCountdownNeedModification] = useState(
@@ -26,11 +32,7 @@ function Questions(props) {
   }
 
   function handleAnswerClick(event) {
-    console.log("event.target.value : ", event.target.value);
-    console.log(
-      "currentQuestion.correctAnswer: ",
-      currentQuestion.correctAnswer
-    );
+    // Save the new answer
     if (event.target.value == currentQuestion.correctAnswer) {
       props.setUserAnswers(prevAnswers => [
         ...prevAnswers,
@@ -39,8 +41,36 @@ function Questions(props) {
     } else {
       props.setUserAnswers(prevAnswers => [...prevAnswers, answerValues.wrong]);
     }
+
+    //Reset countdown and move to next question
     setCountdownNeedReset(true);
     setCurrentQuestionIndex(prevIndex => prevIndex + 1);
+  }
+
+  function handleFiftyLifelineUse() {
+    let indexOfAnswersUsed = [];
+    let indexChosen = 0;
+    let newAnswersHideStatus = Array(numberOfAnswers).fill(false);
+
+    for (let i = 0; i < numberOfAnswersToHide; i++) {
+      do {
+        indexChosen = props.generateRandomNumber(numberOfAnswers);
+        console.log("indexChosen: ", indexChosen);
+        console.log(currentQuestion.correctAnswer);
+      } while (
+        indexChosen == currentQuestion.correctAnswer ||
+        indexOfAnswersUsed.indexOf(indexChosen) !== -1
+      );
+      indexOfAnswersUsed.push(indexChosen);
+      newAnswersHideStatus[indexChosen] = true;
+    }
+    setIsFiftyLifelineUsed(true);
+    setAnswersHideStatus(newAnswersHideStatus);
+  }
+
+  function handleTimeLifelineUse() {
+    setIsTimeLifelineUsed(true);
+    setCountdownNeedModification(true);
   }
 
   if (currentQuestion.image) {
@@ -48,23 +78,26 @@ function Questions(props) {
       <img
         className="question-image"
         src={"/images/" + currentQuestion.image}
-        alt=""
+        alt={currentQuestion.image}
       />
     );
   }
   return (
     <div className="player-panel">
       <button
-        className={"btn-more-time " /*+ (useTimeLifeline && "btn-red")*/}
-        onClick={() => setCountdownNeedModification(true)}
-        disabled={false}
+        className={
+          "btn-more-time " + (isTimeLifelineUsed && "btn-red disable-button")
+        }
+        onClick={handleTimeLifelineUse}
       >
         +10 s
       </button>
       <button
-        className={"btn-50-50 " /*+ (useFiftyLifeline && "btn-red")*/}
-        onClick={() => alert("used!")}
-        disabled={false}
+        className={
+          "btn-50-50 " + (isFiftyLifelineUsed && "btn-red disable-button")
+        }
+        onClick={handleFiftyLifelineUse}
+        disabled={isFiftyLifelineUsed}
       >
         50/50
       </button>
@@ -91,7 +124,7 @@ function Questions(props) {
             <Fragment key={index}>
               <button
                 className="btn-possible-answers-text"
-                //hidden={questionsHideStatus[0]}
+                hidden={answersHideStatus[index]}
                 onClick={handleAnswerClick}
                 value={index}
               >
