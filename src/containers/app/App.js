@@ -89,10 +89,10 @@ function App() {
     );
   }
   // When the user has answered all the questions, the game over message is rendered.
+  // The results are obtained by filtering the userAnswers array with the appropriate condition,and then,
+  // displaying the length of the resulting filtered array.
   if (userAnswers.length === numberOfQuestionsToShow) {
     content = (
-      // The results are obtained by filtering the userAnswers array with the appropriate condition,
-      // and then, displaying the length of the resulting array.
       <GameOverMessage
         correctAnswers={
           userAnswers.filter(answer => answer === answerValues.correct).length

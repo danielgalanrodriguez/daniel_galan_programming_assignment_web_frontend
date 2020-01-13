@@ -23,6 +23,8 @@ function Questions(props) {
   let currentQuestion = props.questions[currentQuestionIndex];
   let image = null;
 
+  // When the countdown reaches the end,we add the unanswered value to the answers array
+  // and we advance to the next question.
   function countdownEndHandler() {
     props.setUserAnswers(prevAnswers => [
       ...prevAnswers,
@@ -31,8 +33,10 @@ function Questions(props) {
     setCurrentQuestionIndex(prevIndex => prevIndex + 1);
   }
 
+  // When the user clicks an answer we:
+  // Check if it is correct or not and add the appropriate value to the array.
+  // Reset countdown and move to next question.
   function handleAnswerClick(event) {
-    // Save the new answer
     if (event.target.value == currentQuestion.correctAnswer) {
       props.setUserAnswers(prevAnswers => [
         ...prevAnswers,
@@ -42,11 +46,16 @@ function Questions(props) {
       props.setUserAnswers(prevAnswers => [...prevAnswers, answerValues.wrong]);
     }
 
-    //Reset countdown and move to next question
     setCountdownNeedReset(true);
     setCurrentQuestionIndex(prevIndex => prevIndex + 1);
   }
 
+  // If the fifty fifty lifeline is executed we:
+  // Generate randomly the index of the answer to hide.
+  // We do so until we get an unused index that is not the correct answer.
+  // Then we add the index used to the proper array.
+  // And we update the auxillary hide status array.
+  // Finally, we set the lifeline to used and we update the answers hide status.
   function handleFiftyLifelineUse() {
     let indexOfAnswersUsed = [];
     let indexChosen = 0;
@@ -55,24 +64,27 @@ function Questions(props) {
     for (let i = 0; i < numberOfAnswersToHide; i++) {
       do {
         indexChosen = props.generateRandomNumber(numberOfAnswers);
-        console.log("indexChosen: ", indexChosen);
-        console.log(currentQuestion.correctAnswer);
       } while (
         indexChosen == currentQuestion.correctAnswer ||
         indexOfAnswersUsed.indexOf(indexChosen) !== -1
       );
+
       indexOfAnswersUsed.push(indexChosen);
       newAnswersHideStatus[indexChosen] = true;
     }
+
     setIsFiftyLifelineUsed(true);
     setAnswersHideStatus(newAnswersHideStatus);
   }
 
+  // If the time lifeline is executed we:
+  // We set the lifeline to used and trigger the modification.
   function handleTimeLifelineUse() {
     setIsTimeLifelineUsed(true);
     setCountdownNeedModification(true);
   }
 
+  // The image is only rendered with questions with an image to display.
   if (currentQuestion.image) {
     image = (
       <img
@@ -82,6 +94,7 @@ function Questions(props) {
       />
     );
   }
+
   return (
     <div className="player-panel">
       <button
@@ -104,6 +117,7 @@ function Questions(props) {
       <div className="player-time player-remaining-questions">
         {`${currentQuestionIndex + 1}/${props.questions.length}`}
       </div>
+
       <Countdown
         maxSeconds={secondsToAnswer}
         secondsToModify={secondsToAdd}
@@ -113,6 +127,7 @@ function Questions(props) {
         setNeedReset={setCountdownNeedReset}
         setNeedModification={setCountdownNeedModification}
       />
+
       <div className="possible-answers-text">
         <div className="question-text" id="questionText">
           {currentQuestion.text}
