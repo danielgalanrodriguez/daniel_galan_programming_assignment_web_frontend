@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import StartMessage from "../../components/messages/Start";
 import GameOverMessage from "../../components/messages/GameOver";
-import Questions from "../../components/question/Questions";
+import Questions from "../../components/questions/Questions";
 import "./App.css";
 
 const questionsURL = "http://localhost:3000/questions.json";
