@@ -1,5 +1,6 @@
-import React, { useState, useEffect, Fragment } from "react";
-import Countdown from "../countdown/Countdown";
+import React, { useState, useEffect } from "react";
+import Countdown from "../general/countdown/Countdown";
+import Question from "./question/Question";
 
 const secondsToAnswer = 15;
 const secondsToAdd = 10;
@@ -21,7 +22,6 @@ function Questions(props) {
 
   let answerValues = props.answerValues;
   let currentQuestion = props.questions[currentQuestionIndex];
-  let image = null;
 
   // When the countdown reaches the end,we add the unanswered value to the answers array
   // and we advance to the next question.
@@ -30,11 +30,12 @@ function Questions(props) {
       ...prevAnswers,
       answerValues.unanswered
     ]);
+    setAnswersHideStatus(Array(numberOfAnswers).fill(false));
     setCurrentQuestionIndex(prevIndex => prevIndex + 1);
   }
 
   // When the user clicks an answer we:
-  // Check if it is correct or not and add the appropriate value to the array.
+  // Check if it is correct or not and add the appropriate value to the answers array.
   // Reset countdown and move to next question.
   function handleAnswerClick(event) {
     if (event.target.value == currentQuestion.correctAnswer) {
@@ -77,22 +78,17 @@ function Questions(props) {
     setAnswersHideStatus(newAnswersHideStatus);
   }
 
+  useEffect(() => {
+    if (isFiftyLifelineUsed) {
+      setAnswersHideStatus(Array(numberOfAnswers).fill(false));
+    }
+  }, [currentQuestionIndex]);
+
   // If the time lifeline is executed we:
   // We set the lifeline to used and trigger the modification.
   function handleTimeLifelineUse() {
     setIsTimeLifelineUsed(true);
     setCountdownNeedModification(true);
-  }
-
-  // The image is only rendered with questions with an image to display.
-  if (currentQuestion.image) {
-    image = (
-      <img
-        className="question-image"
-        src={"/images/" + currentQuestion.image}
-        alt={currentQuestion.image}
-      />
-    );
   }
 
   return (
@@ -128,28 +124,14 @@ function Questions(props) {
         setNeedModification={setCountdownNeedModification}
       />
 
-      <div className="possible-answers-text">
-        <div className="question-text" id="questionText">
-          {currentQuestion.text}
-        </div>
-        {image}
-        <br />
-        {[...Array(numberOfAnswers)].map((element, index) => {
-          return (
-            <Fragment key={index}>
-              <button
-                className="btn-possible-answers-text"
-                hidden={answersHideStatus[index]}
-                onClick={handleAnswerClick}
-                value={index}
-              >
-                {currentQuestion.answers[index]}
-              </button>
-              <br />
-            </Fragment>
-          );
-        })}
-      </div>
+      <Question
+        text={currentQuestion.text}
+        image={currentQuestion.image}
+        answers={currentQuestion.answers}
+        numberOfAnswers={numberOfAnswers}
+        answersHideStatus={answersHideStatus}
+        clickHandler={handleAnswerClick}
+      />
     </div>
   );
 }

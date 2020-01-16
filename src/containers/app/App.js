@@ -37,19 +37,16 @@ function App() {
       let indexChosen = 0;
 
       // For every question we have to choose, we:
+      // Generate a random index from 0 to allQuestions.length-1 (0-15).
+      // If we already have this index, we generate another one.
       for (let i = 0; i < numberOfQuestionsToShow; i++) {
         do {
-          // Generate a random index from 0 to allQuestions.length-1 (0-15).
           indexChosen = generateRandomNumber(allQuestions.length);
-        } while (
-          // If we already have this index, we generate another one.
-          indexOfQuestionsUsed.indexOf(indexChosen) !== -1
-        );
+        } while (indexOfQuestionsUsed.indexOf(indexChosen) !== -1);
 
         // When we already have a valid index, we add the corresponding question.
-        questionsToShow.push(allQuestions[indexChosen]);
-
         // We also add the used index.
+        questionsToShow.push(allQuestions[indexChosen]);
         indexOfQuestionsUsed.push(indexChosen);
       }
       // Finally we store the questions chosen in the state of the app.
