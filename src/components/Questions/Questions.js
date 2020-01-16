@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import Countdown from "../general/countdown/Countdown";
-import Question from "./question/Question";
+import Countdown from "../General/Countdown/Countdown";
+import Question from "./Question/Question";
 
 const secondsToAnswer = 15;
 const secondsToAdd = 10;
