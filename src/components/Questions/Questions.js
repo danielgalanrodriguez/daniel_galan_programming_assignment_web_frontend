@@ -37,8 +37,8 @@ function Questions(props) {
   // When the user clicks an answer we:
   // Check if it is correct or not and add the appropriate value to the answers array.
   // Reset countdown and move to next question.
-  function handleAnswerClick(event) {
-    if (event.target.value == currentQuestion.correctAnswer) {
+  function handleAnswerClick(answer) {
+    if (answer == currentQuestion.correctAnswer) {
       props.setUserAnswers(prevAnswers => [
         ...prevAnswers,
         answerValues.correct

@@ -25,8 +25,7 @@ function Question(props) {
             <button
               className="btn-possible-answers-text"
               hidden={props.answersHideStatus[index]}
-              onClick={props.clickHandler}
-              value={index}
+              onClick={() => props.clickHandler(index)}
             >
               {props.answers[index]}
             </button>

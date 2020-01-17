@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import StartMessage from "../../components/Messages/Start/Start";
-import GameOverMessage from "../../components/Messages/GameOver/GameOver";
+import Start from "../../components/Messages/Start/Start";
+import GameOver from "../../components/Messages/GameOver/GameOver";
 import Questions from "../../components/Questions/Questions";
 import "./App.css";
 
@@ -16,14 +16,13 @@ function App() {
   const [isGameStarted, setIsGameStarted] = useState(false);
 
   // Fetching all questions (from any DB or server).
+  // Once the questions are fetched we store them in the state of the app.
   useEffect(() => {
     fetch(questionsURL)
       .then(response => response.json())
       .then(fetchedQuestions => {
-        // Once the questions are fetched we store them in the state of the app.
         setAllQuestions(fetchedQuestions.questions);
       })
-      //.then()
       .catch(function() {
         console.log("error");
       });
@@ -71,7 +70,7 @@ function App() {
   // Initially, it is the starting welcome message.
   let content = (
     // The loading variable allows the user to start the game only when everything is loaded correctly.
-    <StartMessage loading={isGameLoading} startHandler={startHandler} />
+    <Start loading={isGameLoading} startHandler={startHandler} />
   );
 
   // If the game has been started, the question component is rendered.
@@ -90,7 +89,7 @@ function App() {
   // displaying the length of the resulting filtered array.
   if (userAnswers.length === numberOfQuestionsToShow) {
     content = (
-      <GameOverMessage
+      <GameOver
         correctAnswers={
           userAnswers.filter(answer => answer === answerValues.correct).length
         }
