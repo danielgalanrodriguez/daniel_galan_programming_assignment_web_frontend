@@ -24,18 +24,28 @@ npm install
 npm start
 ```
 
+- To run the tests.
+
+```bash
+npm test
+```
+
 #### Learn More
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-## Framework used
+## Frameworks used
 
 ### React
 
 I used React because it is a framework that suits really well with applications based in one page. Moreover, because I have some experience with it and I am comfortable working with it.
 
-## Decisions made
+### Jest with Enzyme
+
+I decided to use the test runner Jest because its use in wide spread and it is also recommended in the [React's documentation](https://reactjs.org/docs/testing.html).And for the testing utility I use Enzyme because it is easy to use and also popular.
+
+## Decisions made in the implementation.
 
 ### Questions
 
@@ -52,7 +62,7 @@ To store the questions, I decided to do it in a Json file (located in the public
 The project structure is the following:<br/>
 The components are separated in two main folders, 'containers' and 'components'.
 The 'containers' folder has all the container components whereas the 'components' folder has all the components that are rendered by the containers.<br/>
-Each component has its own folder with all the files needed to render it.
+Each component has its own folder with all the files needed to render it and test it.
 Some can contain other components inside their folder as well.
 
 ### Components structure
@@ -96,3 +106,25 @@ It uses the same function as the App component to generate a random number. I de
 For this component, I decided to make 100% reusable. It is independent, it manages its own state, and only needs the props to perform specific functionalities.
 
 When the component mounts an interval is set and it is cleared when the component is unmounted. The interval updates the time each second. The seconds are initialized according to its property and when the countdown reaches 0 it resets itself and executes a function passed by its parent. When the parent want to trigger a reset or a modification on the seconds remaining, the props are changed, the component applies the appropriate changes and it resets the triggers to be able to change again if necessary.
+
+## Decisions made in tests implementation
+
+First of all, I decided to use functional components instead of class based components. I think that functional component with react hooks is more powerful and simple than class components. However, it is more difficult to keep track of the component's state when testing, moreover, it is not possible to access it nor modify it. At least with Jest and Enzyme. Therefore, my approach with the tests focuses in the functionality rather than the implementation.
+
+More precisely I started to test the presentation components.
+
+### Testing GameOver, Start and Question components
+
+#### GameOver
+
+The GameOver component has only some headers to display the message along with the props. In this case I only make sure that with a valid set of props it renders the headers correctly.
+
+#### Start
+
+The Start component has more than just a message. It also has a button that starts the game. In this case, apart from testing the correct rendering, the important thing is that when the user clicks the button it executes the callback to start the game. This is the important thing. After that, I assume the the callback will correctly update the state and consequently render the next component.
+
+#### Question
+
+I did the same with the Question component. I assume that the parent will pass the correct props. I test the correct rendering of the component and then, I test again that when the user clicks on an answer, this action executes the callback that takes care of performing the appropriate changes assuming that the implementation is okay.
+
+I am not sure if it is the appropriate approach,however, with my research I do think that is at least a valid one.
