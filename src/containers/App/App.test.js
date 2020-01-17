@@ -1,16 +1,29 @@
-import React from "react";
-import { render } from "@testing-library/react";
 import App from "./App";
+import Start from "../../components/Messages/Start/Start";
+import Questions from "../../components/Questions/Questions";
 
-import ReactDOM from "react-dom";
+describe("Testing <App />", () => {
+  beforeEach(done => {
+    const mockSuccessResponse = { questions: [...finalQuestions] };
+    const mockJsonPromise = Promise.resolve(mockSuccessResponse);
+    const mockFetchPromise = Promise.resolve({ json: () => mockJsonPromise });
+    jest.spyOn(global, "fetch").mockImplementation(() => mockFetchPromise);
 
-it("renders without crashing", () => {
-  const div = document.createElement("div");
-  ReactDOM.render(<App />, div);
+    wrapper = mount(<App />);
+    done();
+  });
+
+  afterEach(cleanup);
+
+  it("should render <Start>", () => {
+    expect(wrapper.find(Start)).toHaveLength(1);
+  });
+
+  it("should render <Questions> when start button clicked", () => {
+    wrapper
+      .find(Start)
+      .find("button")
+      .invoke("onClick")();
+    expect(wrapper.find(Questions)).toHaveLength(1);
+  });
 });
-
-// test("renders learn react link", () => {
-//   const { getByText } = render(<App />);
-//   const linkElement = getByText(/learn react/i);
-//   expect(linkElement).toBeInTheDocument();
-// });
