@@ -1,0 +1,35 @@
+.btn-50-50 {
+  top: 45px;
+  left: 150px;
+  height: 40px;
+  width: 100px;
+  transform: none;
+  border-radius: 70%;
+  border: 1px;
+  border-style: solid;
+}
+.btn-50-50:hover {
+  background-color: lightgray;
+}
+
+.btn-more-time {
+  top: 45px;
+  left: auto;
+  right: 150px;
+  height: 40px;
+  width: 100px;
+  transform: none;
+  border-radius: 70%;
+  border: 1px;
+  border-style: solid;
+}
+.btn-more-time:hover {
+  background-color: lightgray;
+}
+
+.btn-red {
+  background-color: red;
+}
+.disable-button {
+  pointer-events: none;
+}

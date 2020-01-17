@@ -1,0 +1,23 @@
+.question-image {
+  position: relative;
+  left: 50%;
+
+  transform: translateX(-50%);
+  height: 150px;
+}
+
+.btn-possible-answers-text {
+  font-size: 20px;
+  text-align: center;
+  letter-spacing: 2px;
+  font-weight: 100;
+  width: auto;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  position: absolute;
+  text-transform: none;
+}
+
+.btn-possible-answers-text:active {
+  background-color: lightgray;
+}

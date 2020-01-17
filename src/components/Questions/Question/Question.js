@@ -1,4 +1,5 @@
 import React, { Fragment } from "react";
+import "./Question.css";
 
 function Question(props) {
   let image = null;

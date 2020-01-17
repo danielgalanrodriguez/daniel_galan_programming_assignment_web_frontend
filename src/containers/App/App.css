@@ -1,6 +1,12 @@
 /**********************************************
 *** PLAYER
 **********************************************/
+.player-panel {
+  width: 100%;
+  float: left;
+  height: 600px;
+  padding: 100px;
+}
 
 .player-name {
   font-size: 40px;
@@ -12,19 +18,6 @@
   margin-bottom: 10px;
   position: relative;
 }
-
-/* player-name {
-  font-size: 40px;
-  text-align: center;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  font-weight: 100;
-  margin-top: 20px;
-  margin-bottom: 10px;
-  position: relative;
-  top: 200px;
-  color: green;
-} */
 
 .player-time {
   top: 60px;
@@ -55,14 +48,6 @@
   margin-top: 20px;
   margin-bottom: 10px;
   position: relative;
-}
-
-.question-image {
-  position: relative;
-  left: 50%;
-
-  transform: translateX(-50%);
-  height: 150px;
 }
 
 .posible-answers-text {
@@ -138,59 +123,6 @@ i {
   transition: margin 0.3s;
 }
 
-.btn-new {
-  top: 45px;
-}
-.btn-50-50 {
-  top: 45px;
-  left: 150px;
-  height: 40px;
-  width: 100px;
-  transform: none;
-  border-radius: 70%;
-  border: 1px;
-  border-style: solid;
-}
-.btn-50-50:hover {
-  background-color: lightgray;
-}
-
-.btn-more-time {
-  top: 45px;
-  left: auto;
-  right: 150px;
-  height: 40px;
-  width: 100px;
-  transform: none;
-  border-radius: 70%;
-  border: 1px;
-  border-style: solid;
-}
-.btn-more-time:hover {
-  background-color: lightgray;
-}
-
-.btn-possible-answers-text {
-  font-size: 20px;
-  text-align: center;
-  letter-spacing: 2px;
-  font-weight: 100;
-  width: auto;
-  margin-top: 20px;
-  margin-bottom: 10px;
-  position: absolute;
-  text-transform: none;
-}
-
-.btn-possible-answers-text:active {
-  background-color: lightgray;
-}
-.btn-red {
-  background-color: red;
-}
-.disable-button {
-  pointer-events: none;
-}
 .hide {
   display: none;
 }

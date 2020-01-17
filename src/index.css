@@ -6,7 +6,6 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-
 }
 
 .clearfix::after {
@@ -16,7 +15,11 @@
 }
 
 body {
-  background-image: linear-gradient(rgba(62, 20, 20, 0.4), rgba(62, 20, 20, 0.4)), url(assets/background.jpg);
+  background-image: linear-gradient(
+      rgba(62, 20, 20, 0.4),
+      rgba(62, 20, 20, 0.4)
+    ),
+    url(assets/background.jpg);
   background-size: cover;
   background-position: center;
   font-family: Lato;
@@ -36,11 +39,3 @@ body {
   box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.3);
   overflow: hidden;
 }
-
-.player-panel {
-  width: 100%;
-  float: left;
-  height: 600px;
-  padding: 100px;
-}
-

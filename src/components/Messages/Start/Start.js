@@ -1,11 +1,11 @@
 import React from "react";
-
+import "./Start.css";
 function Start(props) {
   return (
     <div className="player-panel">
       <button
         className="btn-new"
-        onClick={props.startHandler }
+        onClick={props.startHandler}
         disabled={props.loading}
       >
         <i className="ion-ios-plus-outline"></i>
@@ -13,7 +13,9 @@ function Start(props) {
       </button>
 
       <h1 className="player-name">
-        Välkommen till Jayway Quiz!<br/>Redo att börja?
+        Välkommen till Jayway Quiz!
+        <br />
+        Redo att börja?
       </h1>
     </div>
   );
