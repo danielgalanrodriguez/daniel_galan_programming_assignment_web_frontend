@@ -18,12 +18,4 @@ describe("Testing <App />", () => {
   it("should render <Start>", () => {
     expect(wrapper.find(Start)).toHaveLength(1);
   });
-
-  it("should render <Questions> when start button clicked", () => {
-    wrapper
-      .find(Start)
-      .find("button")
-      .invoke("onClick")();
-    expect(wrapper.find(Questions)).toHaveLength(1);
-  });
 });
